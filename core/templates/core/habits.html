@@ -3,7 +3,26 @@
 
 <body class=body>
 
-    <p>Hello world.</p>
+  {% for habit in habits %}
+  <div class="habitscontainer">
+    <div>
+      <h2 class="habitname">
+        <a href="{% url 'habit-detail' habit.pk %}">{{habit.name}}</a>
+      </h2>
+    </div>
+
+    <div>
+      <p class="description">
+        {{habit.description}}
+      </p>
+      <p>
+        Days tracked: {{habit.get_days_tracked}}
+      </p>
+    </div>
+
+  </div>
+
+  {% endfor %}
 
 </body>
 

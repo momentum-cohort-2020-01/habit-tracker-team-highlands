@@ -25,6 +25,10 @@ class Habit(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+
+    @property
+    def get_days_tracked(self):
+        return len(self.habit_log.all())
     
 
 class Unit(models.Model):
