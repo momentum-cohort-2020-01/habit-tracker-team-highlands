@@ -14,8 +14,12 @@ def habits(request):
 def habit_detail(request, pk):
     habit = Habit.objects.get(pk=pk)
     habits = Habit.objects.all()
+<<<<<<< HEAD
     logs = Log.objects.filter(habit=habit)
     return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, "pk": pk,'logs':logs})
+=======
+    return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, "pk": pk})
+>>>>>>> ba23cc9... Create cards for all the habits on the homepage
 
 def edit_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
@@ -47,6 +51,7 @@ def new_habit(request):
         form = HabitForm()
 
     return render(request, 'core/new_habit.html', {'form': form, 'habits': habits})
+<<<<<<< HEAD
 
 
 def track_habit(request, pk):
@@ -78,6 +83,8 @@ def delete_log(request, pk):
     log = get_object_or_404(Log, pk=pk)
     log.delete()
     return redirect('/')
+=======
+>>>>>>> ba23cc9... Create cards for all the habits on the homepage
 
 def error(request):
     habits = Habit.objects.all()
