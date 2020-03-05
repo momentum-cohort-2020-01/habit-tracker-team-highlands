@@ -4,12 +4,12 @@
 <body class=body>
     {{habit.name}}
     <div class="container">
-        {% for activity in activities %}
+        {% for log in logs %}
         <div class="habits-container">
 
             <div>
                 <h2 class="habit-name">
-                    <a href="{% url 'edit-activity' activity.pk %}">{{log.activity_date}}</a>
+                    {{log.activity_date}}
                 </h2>
             </div>
 

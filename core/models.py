@@ -30,7 +30,7 @@ class Habit(models.Model):
 
     @property
     def get_days_tracked(self):
-        return len(self.habit_log.all())
+        return len(self.habit_log.all())  #This is broken. 
     
 
 class Unit(models.Model):

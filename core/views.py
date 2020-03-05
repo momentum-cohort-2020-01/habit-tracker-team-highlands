@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Habit, Unit, Log
+from .models import Habit, Unit, Log, User
 
 from .forms import HabitForm, ActivityForm
 
@@ -13,7 +14,8 @@ def habits(request):
 def habit_detail(request, pk):
     habit = Habit.objects.get(pk=pk)
     habits = Habit.objects.all()
-    return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, "pk": pk})
+    logs = Log.objects.all()
+    return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, "pk": pk,'logs':logs})
 
 def edit_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
@@ -46,18 +48,18 @@ def new_habit(request):
 
     return render(request, 'core/new_habit.html', {'form': form, 'habits': habits})
 
-
+@login_required
 def track_habit(request, pk):
     habits=Habit.objects.all()
     habit = get_object_or_404(Habit, pk=pk)
+    log = Log.objects.create(habit=habit)
     if request.method == 'POST':
         form = ActivityForm(request.POST, instance=habit)
         if form.is_valid():
             habit = form.save()
             form.save()
-            return redirect('habit-detail')
+            return redirect('habits')
     else:
         form = ActivityForm(instance=habit)
     return render(request, 'core/track_habit.html', {'form': form, 'habits':habits})
 
-# Create your views here.
