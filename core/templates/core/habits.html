@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body class=body>
+
+
+
+</body>
+
+{% endblock %}
+
+
+<!-- {% for book in books %}
+  <div class="bookcontainer">
+    <div>
+      <h3 class="title">
+        <a href="{% url 'books-detail' book.pk %}">{{book.title}}</a>
+      </h3>
+      <p class="details">
+        {{book.author}}
+      </p>
+    </div>
+
+    <div class="description link">
+      {{book.description}}
+      <p class="link">
+        <a href="{{book.url}}">{{book.url}}</a>
+      </p>
+      <p class="link">
+        Created at: {{book.created_at}}
+      </p>
+    </div>
+
+
+    <p class="link description">
+      {% if book.category %}<a class="link description"
+        href='{% url "books-by-category" book.category.slug %}'>Category: {{book.category}}</a>{% endif %}
+    </p>
+
+
+    {% if book.favorite %}
+    <p class="link description">
+      Favorited!
+    </p>
+    {% endif %}
+
+
+    <p class="edit-delete link">
+      <a href="{% url 'edit-book' pk=book.pk %}">Edit Book</a>
+
+      <a class="confirm-delete link" href="{% url 'delete-book' pk=book.pk %}"
+        onclick="return confirm('Are you sure you want to delete this?')">Delete Book</a>
+    </p>
+  </div>
+
+  {% endfor %} -->
