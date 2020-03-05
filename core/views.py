@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from .models import Habit, Unit, Log
 
-from .forms import HabitForm
+from .forms import HabitForm, ActivityForm
 
 
 def habits(request):
@@ -42,5 +42,19 @@ def new_habit(request):
         form = HabitForm()
 
     return render(request, 'core/new_habit.html', {'form': form})
+
+
+def track_habit(request, pk):
+    habits=Habit.objects.all()
+    habit = get_object_or_404(Habit, pk=pk)
+    if request.method == 'POST':
+        form = ActivityForm(request.POST, instance=habit)
+        if form.is_valid():
+            habit = form.save()
+            form.save()
+            return redirect('habits')
+    else:
+        form = ActivityForm(instance=habit)
+    return render(request, 'core/track_habit.html', {'form': form, 'habits':habits})
 
 # Create your views here.
