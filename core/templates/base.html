@@ -5,23 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Spartan&display=swap" rel="stylesheet">    <link rel="stylesheet" href="{% static 'styles.css' %}" />
     {% block title %}<title>Habits</title>{% endblock %}
 </head>
 
 <header class="header">
-    <h1 class="site-name">
+    <a class="home-button" href="{% url 'habits' %}">
+        <h1 class="site-name">
         Habit Tracker
-    </h1>
+        </h1>
+    </a>
     <div class="logout">
         <a href="/accounts/logout/">Logout</a>
     </div>
     <hr>
     {% for habit in habits %}
-    <div class="header-habit">
-        <a href="{% url 'habit-detail' habit.pk %}">
+    <div class="head-habit-list">
+            <a class="header-habit" href="{% url 'habit-detail' habit.pk %}">
             {{habit.name}}
-        </a>
+            </a>
     </div>
     {% endfor %}
 
