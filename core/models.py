@@ -45,7 +45,7 @@ class Unit(models.Model):
         return super().save(*args, **kwargs)
 
 class Log(models.Model):
-    created_at = models.DateField(auto_now=True)
+    activity_at = models.DateField(auto_now=True)
     habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.DO_NOTHING)  ##Might need null=true and blank=true here.
     value = models.IntegerField(default=0)
     comments = models.TextField(max_length=None)
