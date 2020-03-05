@@ -32,4 +32,15 @@ def delete_habit(request, pk):
     habit.delete()
     return redirect('/')
 
+def new_habit(request):
+    if request.method == "POST":
+        form = HabitForm(request.POST)
+        if form.is_valid():
+            habit = form.save()
+            return redirect('habits')
+    else:
+        form = HabitForm()
+
+    return render(request, 'core/new_habit.html', {'form': form})
+
 # Create your views here.

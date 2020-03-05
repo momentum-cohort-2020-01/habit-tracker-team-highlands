@@ -5,6 +5,13 @@
 
   {% for habit in habits %}
   <div class="habitscontainer">
+    <a href="{% url 'new-habit' %}">
+      <div>
+        <h2>New Habit</h2>
+        <p>+</p>
+      </div>
+    </a>
+
     <div>
       <h2 class="habitname">
         <a href="{% url 'habit-detail' habit.pk %}">{{habit.name}}</a>
