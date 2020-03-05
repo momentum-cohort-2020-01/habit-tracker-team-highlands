@@ -2,15 +2,15 @@
 {% block content %}
 
 <body class=body>
-<div class="container">
-  <a class="habits-container new" href="{% url 'new-habit' %}">
+
+  <a href="{% url 'new-habit' %}">
     <div>
       <h2>New Habit</h2>
       <p>+</p>
     </div>
   </a>
   {% for habit in habits %}
-  <div class="habits-container">
+  <div class="habitscontainer">
 
     <div>
       <h2 class="habit-name">
