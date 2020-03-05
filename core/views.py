@@ -55,7 +55,7 @@ def track_habit(request, pk):
         if form.is_valid():
             habit = form.save()
             form.save()
-            return redirect('habits')
+            return redirect('habit-detail')
     else:
         form = ActivityForm(instance=habit)
     return render(request, 'core/track_habit.html', {'form': form, 'habits':habits})
