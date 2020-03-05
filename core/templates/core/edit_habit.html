@@ -3,12 +3,9 @@
 
 <body class="body">
     <div class="headercontainer">
-        <h1 class="header"> Edit Habit </h1>
-        <div class="newbook">
-            <a href="{% url 'habits' %}">Home</a>
-        </div>
+        <h1 class="new-habit-head"> Edit Habit </h1>
         <div class="habitcontainer">
-            <form action="" method="post">
+            <form action="" method="post" class="form">
                 {% csrf_token %}
                 <table class="details">
                     {{ form.as_table }}
