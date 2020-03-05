@@ -12,6 +12,24 @@
     {% block title %}<title>Habits</title>{% endblock %}
 </head>
 
+<header class="header">
+    <h1 class="site-name">
+        Habit Tracker
+    </h1>
+    <div class="logout">
+        <a href="/accounts/logout/">Logout</a>
+    </div>
+    <hr>
+    {% for habit in habits %}
+    <div class="header-habit">
+        <a href="{% url 'habit-detail' habit.pk %}">
+            {{habit.name}}
+        </a>
+    </div>
+    {% endfor %}
+
+</header>
+
 <body>
     {% block content %}
     <p>Hello world!</p>

@@ -20,7 +20,8 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.habits, name='habits')
+    path('', views.habits, name = 'habits'),
+    path('habits/<int:pk>', views.habit_detail, name="habit-detail"),
 ]
 
 if settings.DEBUG:
