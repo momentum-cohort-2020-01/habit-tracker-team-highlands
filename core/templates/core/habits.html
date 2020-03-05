@@ -2,18 +2,18 @@
 {% block content %}
 
 <body class=body>
-
-  <a href="{% url 'new-habit' %}">
+<div class="container">
+  <a class="habits-container new" href="{% url 'new-habit' %}">
     <div>
       <h2>New Habit</h2>
       <p>+</p>
     </div>
   </a>
   {% for habit in habits %}
-  <div class="habitscontainer">
+  <div class="habits-container">
 
     <div>
-      <h2 class="habitname">
+      <h2 class="habit-name">
         <a href="{% url 'habit-detail' habit.pk %}">{{habit.name}}</a>
       </h2>
     </div>
@@ -22,7 +22,7 @@
       <p class="description">
         {{habit.description}}
       </p>
-      <p>
+      <p class="tracked">
         Days tracked: {{habit.get_days_tracked}}
       </p>
     </div>
@@ -46,7 +46,7 @@
   </div>
 
   {% endfor %}
-
+</div>
 </body>
 
 {% endblock %}

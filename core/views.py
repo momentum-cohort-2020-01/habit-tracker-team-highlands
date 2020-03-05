@@ -12,10 +12,12 @@ def habits(request):
 
 def habit_detail(request, pk):
     habit = Habit.objects.get(pk=pk)
-    return render(request, 'core/habit_detail.html', {'habit': habit, "pk": pk})
+    habits = Habit.objects.all()
+    return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, "pk": pk})
 
 def edit_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
+    habits = Habit.objects.all()
     if request.method == 'POST':
         form = HabitForm(request.POST, instance=habit)
         if form.is_valid():
@@ -24,7 +26,7 @@ def edit_habit(request, pk):
             return redirect('habits')
     else:
         form = HabitForm(instance=habit)
-    return render(request, 'core/edit_habit.html', {'form': form})
+    return render(request, 'core/edit_habit.html', {'form': form, "habits" : habits})
 
 
 def delete_habit(request, pk):
@@ -33,6 +35,7 @@ def delete_habit(request, pk):
     return redirect('/')
 
 def new_habit(request):
+    habits = Habit.objects.all()
     if request.method == "POST":
         form = HabitForm(request.POST)
         if form.is_valid():
@@ -41,7 +44,7 @@ def new_habit(request):
     else:
         form = HabitForm()
 
-    return render(request, 'core/new_habit.html', {'form': form})
+    return render(request, 'core/new_habit.html', {'form': form, 'habits': habits})
 
 
 def track_habit(request, pk):

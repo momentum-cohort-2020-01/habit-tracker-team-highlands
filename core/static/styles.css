@@ -26,6 +26,7 @@ a:hover {
 hr {
     margin-top: 5px;
     margin-bottom: 5px;
+    clear: both;
 }
 
 .header {
@@ -71,4 +72,70 @@ hr {
 
 .head-habit-list {
     display: inline;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.habits-container {
+    border: 1px solid black;
+    margin: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    contain: content;
+    background: linear-gradient(rgb(171, 216, 204), rgb(149, 189, 179));
+}
+
+.habits-container:hover {
+    border: 2px solid rgb(248, 255, 255);
+    box-shadow: 5px 5px 5px gray;
+    background: linear-gradient(rgb(168, 175, 180), rgb(131, 136, 139));
+}
+
+.new {
+    padding-top: 60px;
+    padding-bottom: auto;
+    font-family: 'Leckerli One'
+}
+
+.habit-name {
+    margin: 2px;
+    font-family: 'Leckerli One';
+    font-size: 25px;
+    font-weight: none;
+}
+
+.description {
+    margin: 2px;
+    border: 0.5px solid gray;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.tracked {
+    float: left;
+    margin: 5px;
+    margin-left: 10px;  
+}
+
+.goal {
+    float: right;
+    margin: 5px;
+    margin-right: 10px;
+}
+
+.edit-delete {
+    clear: both;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 15px;
+    font-style: italic;
 }
