@@ -14,14 +14,15 @@ Units = (
 class Habit(models.Model):
     name = models.CharField(max_length=100)
     goal_value = models.IntegerField(default=0)
+    goal_unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
     description = models.TextField(max_length=None)
     created_at = models.DateField(auto_now=True)
     user = models.ForeignKey(to=User, related_name="users_habits", on_delete=models.CASCADE)
-    goal_unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
+    
     
 
     def __str__(self):
-        return f'Habit Name: {self.name} Daily goal for {self.user}: I want to attempt {self.goal_value} per {self.goal_unit}.'
+        return f'Habit Name: {self.name} Daily goal for {self.user}: {self.description}'
     
     class Meta:
         ordering = ['-created_at']
