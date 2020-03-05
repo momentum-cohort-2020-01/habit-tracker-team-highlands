@@ -14,7 +14,7 @@ def habits(request):
 def habit_detail(request, pk):
     habit = Habit.objects.get(pk=pk)
     habits = Habit.objects.all()
-    logs = Log.objects.all()
+    logs = Log.objects.filter(habit=habit)
     return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, "pk": pk,'logs':logs})
 
 def edit_habit(request, pk):
