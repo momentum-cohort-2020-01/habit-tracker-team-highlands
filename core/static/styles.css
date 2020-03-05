@@ -1,0 +1,74 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Spartan';
+}
+
+a {
+    color: black;
+    text-emphasis: none;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.home-button:hover {
+    text-decoration: none;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.header {
+    background-color: rgb(153, 255, 243);
+    height: 175px;
+    padding: 1rem;
+    border-bottom: 2px solid rgb(128, 218, 207);
+    margin-bottom: 5px;
+}
+
+.site-name {
+    font-family: 'Leckerli One';
+    color: rgb(233, 252, 251);
+    font-size: 75px;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: rgb(174, 223, 220);
+}
+
+.site-name:hover {
+    text-shadow: 5px 5px 5px rgb(100, 167, 159);
+}
+
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1px;
+}
+
+.header-habit {
+    font-size: 12px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgb(167, 233, 203);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.header-habit:hover {
+    box-shadow: 3px 3px 3px rgb(100, 167, 159);
+}
+
+.head-habit-list {
+    display: inline;
+}
