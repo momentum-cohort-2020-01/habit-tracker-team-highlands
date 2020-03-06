@@ -24,7 +24,7 @@ class Habit(models.Model):
     
 
     def __str__(self):
-        return f'Habit Name: {self.name} Daily goal for {self.user}: {self.description}'
+        return f'{self.name}'
     
     class Meta:
         ordering = ['-created_at']
