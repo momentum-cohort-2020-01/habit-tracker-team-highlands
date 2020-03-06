@@ -57,11 +57,8 @@ def track_habit(request, pk):
     if request.method == 'POST':
         form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
-            if Log.Meta():
-                log = form.save()
-                return redirect('habits')
-            else:
-                return redirect('error')
+            log = form.save()
+            return redirect('habits')
     else:
         form = ActivityForm(instance=log)
     return render(request, 'core/track_habit.html', {'form': form, 'log': log, 'habits':habits})

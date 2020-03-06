@@ -28,7 +28,6 @@ urlpatterns = [
     path('logs/delete/<int:pk>', views.delete_log, name = 'delete-log'),
     path('habits/new/', views.new_habit, name = 'new-habit'),
     path('habits/track/<int:pk>', views.track_habit, name = 'track-habit'),
-    path('habits/error', views.error, name = 'error'),
 ]
 
 if settings.DEBUG:
