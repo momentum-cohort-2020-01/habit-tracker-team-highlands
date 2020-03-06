@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from core import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('logs/delete/<int:pk>', views.delete_log, name = 'delete-log'),
     path('habits/new/', views.new_habit, name = 'new-habit'),
     path('habits/track/<int:pk>', views.track_habit, name = 'track-habit'),
+    path('accounts/', include('registration.backends.default.urls'), name='login'),
 ]
 
 if settings.DEBUG:

@@ -124,6 +124,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # for django-debug-toolbar
 INTERNAL_IPS = [

@@ -6,7 +6,7 @@ from .models import Habit, Unit, Log, User
 
 from .forms import HabitForm, ActivityForm
 
-
+@login_required
 def habits(request):
     habits = Habit.objects.all()
     return render(request, 'core/habits.html', {'habits': habits})
@@ -49,7 +49,6 @@ def new_habit(request):
     return render(request, 'core/new_habit.html', {'form': form, 'habits': habits})
 
 
-@login_required
 def track_habit(request, pk):
     habits=Habit.objects.all()
     habit = get_object_or_404(Habit, pk=pk)
