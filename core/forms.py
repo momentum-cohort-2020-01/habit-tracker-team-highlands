@@ -13,4 +13,4 @@ class ActivityForm(forms.ModelForm):
 
     class Meta:
         model = Log
-        fields = ('activity_date', 'value','comments')
+        fields = ('habit', 'activity_date', 'value', 'comments')

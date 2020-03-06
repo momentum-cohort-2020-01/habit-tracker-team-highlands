@@ -57,4 +57,3 @@ class Log(models.Model):
 
     class Meta:
          unique_together = ('habit', 'activity_date')
-

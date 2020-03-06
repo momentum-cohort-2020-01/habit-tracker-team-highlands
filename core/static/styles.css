@@ -224,3 +224,7 @@ hr {
     margin-top: 10px;
     max-width: 60%;
 }
+
+li {
+    list-style-type: None;
+}
