@@ -122,12 +122,14 @@ hr {
     float: left;
     margin: 5px;
     margin-left: 10px;  
+    font-size: 13px;
 }
 
 .goal {
     float: right;
     margin: 5px;
-    margin-right: 10px;
+    margin-right: 1px;
+    font-size: 13px;
 }
 
 .edit-delete {
@@ -136,6 +138,31 @@ hr {
     bottom: 0;
     left: 0;
     right: 0;
-    font-size: 15px;
+    font-size: 11px;
     font-style: italic;
+}
+
+.new-habit-head {
+    font-family: 'Leckerli One';
+    text-align: center;
+}
+
+.form {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.button {
+    margin-left: 105px;
+    margin-top: 5px;
+}
+
+.button:hover {
+    box-shadow: 2px 2px 2px gray;
 }
