@@ -251,3 +251,7 @@ hr {
     background: linear-gradient(rgb(0, 228, 97), rgb(0, 189, 82));
     color: white;
 }
+    
+li {
+    list-style-type: None;
+}
