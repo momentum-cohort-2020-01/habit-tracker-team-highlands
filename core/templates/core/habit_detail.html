@@ -19,16 +19,17 @@
                     {{log.activity_date}}
                 </h2>
             </div>
-            <div>
-                <p class="goal">
-                    Goal: {{habit.goal_value}} {{habit.goal_unit}} per day
-                </p>
+
+            <div class="daily-value">
+                Log: {{log.value}} {{habit.goal_unit}} today
             </div>
 
-            <div>
-                <p class="description">
-                    {{log.comments}}
-                </p>
+            <div class="description">
+                {{log.comments}}
+            </div>
+
+            <div class="edit-delete">
+                <a href="{% url 'edit-log' pk=log.pk %}">Edit Entry | </a>
             </div>
 
 
