@@ -52,14 +52,25 @@ def new_habit(request):
 def track_habit(request, pk):
     habits=Habit.objects.all()
     habit = get_object_or_404(Habit, pk=pk)
-    log = Log.objects.create(habit=habit)
+    log = Log(habit=habit)
     if request.method == 'POST':
-        form = ActivityForm(request.POST, instance=habit)
+        form = ActivityForm(request.POST, instance=log)
+        if form.is_valid():
+            log = form.save()
+            return redirect('habits')
+    else:
+        form = ActivityForm(instance=log)
+    return render(request, 'core/track_habit.html', {'form': form, 'log': log, 'habits':habits})
+
+def edit_log(request, pk):
+    log = get_object_or_404(Log, pk=pk)
+    habits = Habit.objects.all()
+    if request.method == 'POST':
+        form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
             habit = form.save()
             form.save()
             return redirect('habits')
     else:
-        form = ActivityForm(instance=habit)
-    return render(request, 'core/track_habit.html', {'form': form, 'habits':habits})
-
+        form = ActivityForm(instance=log)
+    return render(request, 'core/edit_log.html', {'form': form, "habits" : habits})
