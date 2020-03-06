@@ -219,3 +219,8 @@ hr {
     max-height: 400px;
     contain: content;
 }
+
+.log-comments {
+    margin-top: 10px;
+    max-width: 60%;
+}
