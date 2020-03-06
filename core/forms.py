@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Habit, Log, Unit
+from .models import Habit, Log
 
 
 class HabitForm(forms.ModelForm):
