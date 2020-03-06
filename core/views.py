@@ -48,17 +48,18 @@ def new_habit(request):
 
     return render(request, 'core/new_habit.html', {'form': form, 'habits': habits})
 
+
 @login_required
 def track_habit(request, pk):
     habits=Habit.objects.all()
     habit = get_object_or_404(Habit, pk=pk)
-    log = Log.objects.create(habit=habit)
+    log = Log(habit=habit)
     if request.method == 'POST':
-        form = ActivityForm(request.POST, instance=log)
+        form = ActivityForm(request.POST, instance=habit)
         if form.is_valid():
             log = form.save()
             return redirect('habits')
     else:
-        form = ActivityForm(instance=habit)
+        form = ActivityForm(instance=log)
     return render(request, 'core/track_habit.html', {'form': form, 'habits':habits, 'log': log})
 
