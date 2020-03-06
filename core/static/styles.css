@@ -31,7 +31,7 @@ hr {
 
 .header {
     background-color: rgb(153, 255, 243);
-    height: 175px;
+    height: 185px;
     padding: 1rem;
     border-bottom: 2px solid rgb(128, 218, 207);
     margin-bottom: 5px;
@@ -52,10 +52,24 @@ hr {
     -webkit-text-stroke-color: white;
 }
 
-.logout {
+.logout-container {
     display: flex;
     justify-content: flex-end;
     margin: 1px;
+}
+
+.logout {
+    background-color: rgb(167, 233, 203);
+    width: max-content;
+    padding: 7px;
+    border-radius: 15px;
+    font-size: 10px;
+}
+
+.logout:hover {
+    box-shadow: 3px 3px 3px rgb(100, 167, 159);
+    background-color: rgb(239, 194, 145);
+    border: 1px solid white; 
 }
 
 .header-habit {
@@ -72,6 +86,7 @@ hr {
 .header-habit:hover {
     box-shadow: 3px 3px 3px rgb(100, 167, 159);
     background-color: rgb(239, 194, 145);
+    border: 1px solid white;
 }
 
 .head-habit-list {
