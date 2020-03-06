@@ -217,4 +217,5 @@ hr {
     border-bottom: 5px solid rgb(128, 218, 207);
     min-height: 200px;
     max-height: 400px;
+    contain: content;
 }
