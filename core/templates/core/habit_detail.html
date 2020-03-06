@@ -24,6 +24,16 @@
                 Log: {{log.value}} {{habit.goal_unit}} today
             </div>
 
+            {% if log.value < habit.goal_value %}
+            <div class="goal-not-met">
+            <i class="fas fa-thumbs-down"></i> Daily Goal Not Met 
+            </div>
+            {% else %}
+            <div class="goal-met">
+            <i class="fas fa-thumbs-up"></i> Daily Goal Met!
+            </div>
+            {% endif %}
+
             <div class="description log-comments">
                 {{log.comments}}
             </div>
