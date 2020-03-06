@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body class=body>
+
+    <div>
+        <h2>Please only submit 1 log per habit, per day.</h2>
+        <a class="home-button" href="{% url 'habits' %}">
+            <h1 class="site-name">
+                Return HOME
+            </h1>
+        </a>
+    </div>
+
+</body>
+
+{% endblock %}

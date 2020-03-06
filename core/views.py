@@ -48,6 +48,7 @@ def new_habit(request):
 
     return render(request, 'core/new_habit.html', {'form': form, 'habits': habits})
 
+
 @login_required
 def track_habit(request, pk):
     habits=Habit.objects.all()
@@ -56,8 +57,11 @@ def track_habit(request, pk):
     if request.method == 'POST':
         form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
-            log = form.save()
-            return redirect('habits')
+            if Log.Meta():
+                log = form.save()
+                return redirect('habits')
+            else:
+                return redirect('error')
     else:
         form = ActivityForm(instance=log)
     return render(request, 'core/track_habit.html', {'form': form, 'log': log, 'habits':habits})
@@ -78,3 +82,7 @@ def delete_log(request, pk):
     log = get_object_or_404(Log, pk=pk)
     log.delete()
     return redirect('/')
+
+def error(request):
+    habits = Habit.objects.all()
+    return render(request, 'core/error.html', {'habits': habits})

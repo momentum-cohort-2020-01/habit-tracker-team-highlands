@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
@@ -30,7 +31,7 @@ class Habit(models.Model):
 
     @property
     def get_days_tracked(self):
-        return len(self.habit_log.all())  #This is broken. 
+        return len(self.habit_log.all())  
     
 
 class Unit(models.Model):
@@ -46,7 +47,6 @@ class Unit(models.Model):
         return super().save(*args, **kwargs)
 
 class Log(models.Model):
-    import datetime
     activity_date = models.DateField(default=datetime.date.today)
     habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.DO_NOTHING)  ##Might need null=true and blank=true here.
     value = models.IntegerField(default=0)
@@ -55,3 +55,5 @@ class Log(models.Model):
     def __str__(self):
         return f'Date Tracked: {self.activity_date}, Habit: {self.habit.pk}'
 
+    class Meta:
+         unique_together = ('habit', 'activity_date')
