@@ -54,12 +54,11 @@ def track_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
     log = Log.objects.create(habit=habit)
     if request.method == 'POST':
-        form = ActivityForm(request.POST, instance=habit)
+        form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
-            habit = form.save()
-            form.save()
+            log = form.save()
             return redirect('habits')
     else:
         form = ActivityForm(instance=habit)
-    return render(request, 'core/track_habit.html', {'form': form, 'habits':habits})
+    return render(request, 'core/track_habit.html', {'form': form, 'habits':habits, 'log': log})
 
