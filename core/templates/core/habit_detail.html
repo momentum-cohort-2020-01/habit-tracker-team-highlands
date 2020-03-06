@@ -2,10 +2,17 @@
 {% block content %}
 
 <body class=body>
-    {{habit.name}}
-    <div class="container">
+    <div class="log-head">
+        <p class="habit-name">{{habit.name}}</p>
+        <p>{{habit.description}}</p>
+    </div>
+    <div class="goal-head">
+        Daily Goal: {{habit.goal_value}} {{habit.goal_unit}} per day
+    </div>
+    <a class="entry-button" href="{% url 'track-habit' pk=habit.pk %}">Add Entry! </a>
+    <div>
         {% for log in logs %}
-        <div class="habits-container">
+        <div class="log-container">
 
             <div>
                 <h2 class="habit-name">
