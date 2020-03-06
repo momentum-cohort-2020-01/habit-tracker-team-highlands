@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body class="body">
+    <div class="headercontainer">
+        <h1 class="new-habit-head"> Track Habit </h1>
+        <div class="habitcontainer">
+            <form action="" method="post" class="form">
+                {% csrf_token %}
+                <table class="details">
+                    {{ form.as_table }}
+                </table>
+                <p>
+                    <input type="submit" value="Submit" class="button">
+                </p>
+            </form>
+        </div>
+</body>
+{% endblock %}

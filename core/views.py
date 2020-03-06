@@ -73,4 +73,9 @@ def edit_log(request, pk):
             return redirect('habits')
     else:
         form = ActivityForm(instance=log)
-    return render(request, 'core/edit_log.html', {'form': form, "habits" : habits})
+    return render(request, 'core/edit_log.html', {'form': form, 'log': log, "habits" : habits})
+
+def delete_log(request, pk):
+    log = get_object_or_404(Log, pk=pk)
+    log.delete()
+    return redirect('/')
