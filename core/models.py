@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 #Pillow later perhaps?
-Units = (
+UNITS = (
     ('Times', 'Times'),
     ('Seconds', 'Seconds'),
     ('Minutes', 'Minutes'),
@@ -12,6 +12,7 @@ Units = (
 )
 
 class Habit(models.Model):
+    import datetime
     name = models.CharField(max_length=100)
     goal_value = models.IntegerField(default=0)
     goal_unit = models.ForeignKey('Unit', on_delete=models.CASCADE)
@@ -29,11 +30,11 @@ class Habit(models.Model):
 
     @property
     def get_days_tracked(self):
-        return len(self.habit_log.all())
+        return len(self.habit_log.all())  #This is broken. 
     
 
 class Unit(models.Model):
-    name = models.CharField(max_length=100, choices=Units)
+    name = models.CharField(max_length=100, choices=UNITS)
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
@@ -45,11 +46,12 @@ class Unit(models.Model):
         return super().save(*args, **kwargs)
 
 class Log(models.Model):
-    activity_at = models.DateField(auto_now=True)
+    import datetime
+    activity_date = models.DateField(default=datetime.date.today)
     habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.DO_NOTHING)  ##Might need null=true and blank=true here.
     value = models.IntegerField(default=0)
     comments = models.TextField(max_length=None)
     
     def __str__(self):
-        return f'Date Tracked: {self.created_at}, Habit: {self.habit.pk}'
+        return f'Date Tracked: {self.activity_date}, Habit: {self.habit.pk}'
 

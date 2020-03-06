@@ -32,7 +32,11 @@
       </p>
     </div>
 
+
+
     <p class="edit-delete link">
+      <a href="{% url 'track-habit' pk=habit.pk %}">Track Activity</a>
+
       <a href="{% url 'edit-habit' pk=habit.pk %}">Edit Habit</a>
 
       <a class="confirm-delete link" href="{% url 'delete-habit' pk=habit.pk %}"
