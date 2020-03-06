@@ -47,6 +47,9 @@ hr {
 
 .site-name:hover {
     text-shadow: 5px 5px 5px rgb(100, 167, 159);
+    color: rgb(239, 194, 145);
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: white;
 }
 
 .logout {
@@ -68,6 +71,7 @@ hr {
 
 .header-habit:hover {
     box-shadow: 3px 3px 3px rgb(100, 167, 159);
+    background-color: rgb(239, 194, 145);
 }
 
 .head-habit-list {
@@ -94,7 +98,7 @@ hr {
 .habits-container:hover {
     border: 2px solid rgb(248, 255, 255);
     box-shadow: 5px 5px 5px gray;
-    background: linear-gradient(rgb(168, 175, 180), rgb(131, 136, 139));
+    background: linear-gradient(rgb(239, 194, 145), rgb(190, 154, 116));
 }
 
 .new {
@@ -213,6 +217,7 @@ hr {
 
 .log-container {
     margin: 10px;
+    padding-left: 15px;
     border-top: 5px solid rgb(128, 218, 207);
     border-bottom: 5px solid rgb(128, 218, 207);
     min-height: 200px;
@@ -223,4 +228,26 @@ hr {
 .log-comments {
     margin-top: 10px;
     max-width: 60%;
+}
+
+.goal-not-met {
+    border-radius: 15px;
+    padding: 8px;
+    margin: 5px;
+    width: max-content;
+    font-size: 15px;
+    font-family: 'Leckerli One';
+    background: linear-gradient(rgb(255, 0, 52), rgb(211, 1, 43));
+    color: white;
+}
+
+.goal-met {
+    border-radius: 15px;
+    padding: 8px;
+    margin: 5px;
+    width: max-content;
+    font-size: 15px;
+    font-family: 'Leckerli One';
+    background: linear-gradient(rgb(0, 228, 97), rgb(0, 189, 82));
+    color: white;
 }
