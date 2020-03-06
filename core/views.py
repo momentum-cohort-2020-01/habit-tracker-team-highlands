@@ -68,9 +68,13 @@ def edit_log(request, pk):
     if request.method == 'POST':
         form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
-            habit = form.save()
-            form.save()
+            log = form.save()
             return redirect('habits')
     else:
         form = ActivityForm(instance=log)
-    return render(request, 'core/edit_log.html', {'form': form, "habits" : habits})
+    return render(request, 'core/edit_log.html', {'form': form, 'log': log, "habits" : habits})
+
+def delete_log(request, pk):
+    log = get_object_or_404(Log, pk=pk)
+    log.delete()
+    return redirect('/')

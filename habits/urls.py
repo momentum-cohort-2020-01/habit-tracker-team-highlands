@@ -23,8 +23,9 @@ urlpatterns = [
     path('', views.habits, name = 'habits'),
     path('habits/<int:pk>', views.habit_detail, name = "habit-detail"),
     path('habits/edit/<int:pk>', views.edit_habit, name='edit-habit'),
-    path('habits/edit/<int:pk>', views.edit_log, name='edit-log'),
+    path('logs/edit/<int:pk>', views.edit_log, name='edit-log'),
     path('habits/delete/<int:pk>', views.delete_habit, name = 'delete-habit'),
+    path('logs/delete/<int:pk>', views.delete_log, name = 'delete-log'),
     path('habits/new/', views.new_habit, name = 'new-habit'),
     path('habits/track/<int:pk>', views.track_habit, name = 'track-habit'),
 ]
