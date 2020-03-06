@@ -1,6 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<body class=body>
+    {{habit.name}}
+    <div class="container">
+        {% for log in logs %}
+        <div class="habits-container">
 
+            <div>
+                <h2 class="habit-name">
+                    {{log.activity_date}}
+                </h2>
+            </div>
+
+            <div>
+                <p class="description">
+                    {{habit.description}}
+                </p>
+                <p class="tracked">
+                    Days tracked: {{habit.get_days_tracked}}
+                </p>
+            </div>
+            <div>
+                <p class="goal">
+                    Goal: {{habit.goal_value}} {{habit.goal_unit}} per day
+                </p>
+            </div>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</body>
 
 {% endblock %}
