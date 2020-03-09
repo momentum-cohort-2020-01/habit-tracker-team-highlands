@@ -34,7 +34,7 @@ def edit_habit(request, pk):
 def delete_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
     habit.delete()
-    return redirect('/')
+    return redirect('habits')
 
 def new_habit(request):
     habits = Habit.objects.all()
@@ -63,7 +63,6 @@ def track_habit(request, pk):
     return render(request, 'core/track_habit.html', {'form': form, 'log': log, 'habit':habit, 'habits':habits})
 
 def edit_log(request, pk):
-    # habit = get_object_or_404(Habit, pk=pk)
     log = get_object_or_404(Log, pk=pk)
     habits = Habit.objects.all()
     if request.method == 'POST':
@@ -78,7 +77,7 @@ def edit_log(request, pk):
 def delete_log(request, pk):
     log = get_object_or_404(Log, pk=pk)
     log.delete()
-    return redirect('/')
+    return redirect('habit-detail', pk=log.habit.pk)
 
 def error(request):
     habits = Habit.objects.all()

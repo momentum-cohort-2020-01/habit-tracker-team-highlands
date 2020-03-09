@@ -270,3 +270,29 @@ hr {
 li {
     list-style-type: None;
 }
+
+@keyframes slide-from-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-bottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.log-container{
+    animation: 1s ease-out 0s 1 slide-from-left;
+}
+
+.habits-container{
+    animation: 1s ease-out 0s 1 slide-from-bottom;
+}

@@ -28,7 +28,7 @@ class Habit(models.Model):
 
 class Log(models.Model):
     activity_date = models.DateField(default=datetime.date.today)
-    habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.DO_NOTHING)  ##Might need null=true and blank=true here.
+    habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.CASCADE)  ##Might need null=true and blank=true here.
     value = models.IntegerField(default=0)
     comments = models.TextField(max_length=None)
     
