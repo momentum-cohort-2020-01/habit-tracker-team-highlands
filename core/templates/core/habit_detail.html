@@ -11,7 +11,7 @@
     </div>
 
     <div id="container"
-        style="width: 900px; height: 200px; margin-bottom: 300px; margin-top: -150px;  color: rgb(239, 194, 145);">
+        style="width: 900px; height: 200px; margin-bottom: 300px; color: rgb(239, 194, 145);">
         <canvas id="log-chart" data-url="{% url 'log-chart' %}"></canvas>
     </div>
 
@@ -33,7 +33,7 @@
                         data: {
                             labels: data.labels,
                             datasets: [{
-                                label: 'Activity Date',
+                                label: '{{habit.goal_unit}}',
                                 backgroundColor: 'rgb(239, 194, 145)',
                                 data: data.data
                             }]
@@ -45,7 +45,7 @@
                             },
                             title: {
                                 display: true,
-                                text: 'Activity Log Chart'
+                                text: 'Activity Log'
                             }
                         }
                     });

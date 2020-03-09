@@ -190,7 +190,7 @@ hr {
     max-width: 50%;
     margin: 10px;
     display: inline-block;
-    min-height: 200px;
+    min-height: max-content;
     max-height: 400px;
 }
 
