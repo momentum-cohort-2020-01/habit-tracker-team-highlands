@@ -113,11 +113,7 @@ hr {
 .habits-container:hover {
     border: 2px solid rgb(248, 255, 255);
     box-shadow: 5px 5px 5px gray;
-<<<<<<< HEAD
     background: linear-gradient(rgb(239, 194, 145), rgb(190, 154, 116));
-=======
-    background: linear-gradient(rgb(168, 175, 180), rgb(131, 136, 139));
->>>>>>> ba23cc9... Create cards for all the habits on the homepage
 }
 
 .new {
@@ -145,21 +141,14 @@ hr {
     float: left;
     margin: 5px;
     margin-left: 10px;  
-<<<<<<< HEAD
     font-size: 13px;
-=======
->>>>>>> ba23cc9... Create cards for all the habits on the homepage
 }
 
 .goal {
     float: right;
     margin: 5px;
-<<<<<<< HEAD
     margin-right: 1px;
     font-size: 13px;
-=======
-    margin-right: 10px;
->>>>>>> ba23cc9... Create cards for all the habits on the homepage
 }
 
 .edit-delete {
@@ -168,7 +157,6 @@ hr {
     bottom: 0;
     left: 0;
     right: 0;
-<<<<<<< HEAD
     font-size: 11px;
     font-style: italic;
 }
@@ -281,8 +269,30 @@ hr {
     
 li {
     list-style-type: None;
-=======
-    font-size: 15px;
-    font-style: italic;
->>>>>>> ba23cc9... Create cards for all the habits on the homepage
+}
+
+@keyframes slide-from-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-bottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.log-container{
+    animation: 1s ease-out 0s 1 slide-from-left;
+}
+
+.habits-container{
+    animation: 1s ease-out 0s 1 slide-from-bottom;
 }

@@ -8,7 +8,7 @@ class Habit(models.Model):
     import datetime
     name = models.CharField(max_length=100)
     goal_value = models.IntegerField(default=0)
-    goal_unit = models.CharField(max_length=100)
+    goal_unit = models.CharField(max_length=100, default="unit")
     description = models.TextField(max_length=None)
     created_at = models.DateField(auto_now=True)
     user = models.ForeignKey(to=User, related_name="users_habits", on_delete=models.CASCADE)
@@ -28,7 +28,7 @@ class Habit(models.Model):
 
 class Log(models.Model):
     activity_date = models.DateField(default=datetime.date.today)
-    habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.DO_NOTHING)  ##Might need null=true and blank=true here.
+    habit = models.ForeignKey(to=Habit, related_name="habit_log", on_delete=models.CASCADE)  ##Might need null=true and blank=true here.
     value = models.IntegerField(default=0)
     comments = models.TextField(max_length=None)
     
@@ -37,3 +37,4 @@ class Log(models.Model):
 
     class Meta:
          unique_together = ('habit', 'activity_date')
+         ordering = ['-activity_date']
