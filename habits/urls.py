@@ -29,7 +29,8 @@ urlpatterns = [
     path('logs/delete/<int:pk>', views.delete_log, name = 'delete-log'),
     path('habits/new/', views.new_habit, name = 'new-habit'),
     path('habits/track/<int:pk>', views.track_habit, name = 'track-habit'),
-    path('accounts/', include('registration.backends.default.urls'), name='login'),
+    path('accounts/', include('registration.backends.default.urls'), name = 'login'),
+    path('log-chart/', views.log_chart, name='log-chart'),
 ]
 
 if settings.DEBUG:

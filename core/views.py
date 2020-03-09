@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from .models import Habit, Log, User
 
@@ -82,3 +83,18 @@ def delete_log(request, pk):
 def error(request):
     habits = Habit.objects.all()
     return render(request, 'core/error.html', {'habits': habits})
+
+
+def log_chart(request):
+    labels = []
+    data = []
+
+    queryset = Log.objects.values('activity_date', 'log_value').order_by('-activity_date')
+    for log in queryset:
+        labels.append(log['activity_date'])
+        data.append(log['log_value'])
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
