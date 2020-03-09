@@ -9,6 +9,51 @@
     <div class="goal-head">
         Daily Goal: {{habit.goal_value}} {{habit.goal_unit}} per day
     </div>
+
+    <div id="container"
+        style="width: 900px; height: 200px; margin-bottom: 300px; margin-top: -150px;  color: rgb(239, 194, 145);">
+        <canvas id="log-chart" data-url="{% url 'log-chart' %}"></canvas>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+
+        $(function () {
+
+            var $logChart = $("#log-chart");
+            $.ajax({
+                url: $logChart.data("url"),
+                success: function (data) {
+
+                    var ctx = $logChart[0].getContext("2d");
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'Activity Date',
+                                backgroundColor: 'rgb(239, 194, 145)',
+                                data: data.data
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Activity Log Chart'
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
     <a class="entry-button" href="{% url 'track-habit' pk=habit.pk %}">Add Entry! </a>
     <div>
         {% for log in logs %}
@@ -21,16 +66,16 @@
             </div>
 
             <div class="daily-value">
-                Log: {{log.value}} {{habit.goal_unit}} today
+                Log: {{log.log_value}} {{habit.goal_unit}} today
             </div>
 
-            {% if log.value < habit.goal_value %}
+            {% if log.log_value < habit.goal_value %}
             <div class="goal-not-met">
-            <i class="fas fa-thumbs-down"></i> Daily Goal Not Met 
+                <i class="fas fa-thumbs-down"></i> Daily Goal Not Met
             </div>
             {% else %}
             <div class="goal-met">
-            <i class="fas fa-thumbs-up"></i> Daily Goal Met!
+                <i class="fas fa-thumbs-up"></i> Daily Goal Met!
             </div>
             {% endif %}
 
