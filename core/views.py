@@ -57,22 +57,23 @@ def track_habit(request, pk):
         form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
             log = form.save()
-            return redirect('habits')
+            return redirect('habit-detail', pk=habit.pk)
     else:
         form = ActivityForm(instance=log)
-    return render(request, 'core/track_habit.html', {'form': form, 'log': log, 'habits':habits})
+    return render(request, 'core/track_habit.html', {'form': form, 'log': log, 'habit':habit, 'habits':habits})
 
 def edit_log(request, pk):
+    habit = get_object_or_404(Habit, pk=pk)
     log = get_object_or_404(Log, pk=pk)
     habits = Habit.objects.all()
     if request.method == 'POST':
         form = ActivityForm(request.POST, instance=log)
         if form.is_valid():
             log = form.save()
-            return redirect('habits')
+            return redirect('habit-detail', pk=habit.pk)
     else:
         form = ActivityForm(instance=log)
-    return render(request, 'core/edit_log.html', {'form': form, 'log': log, "habits" : habits})
+    return render(request, 'core/edit_log.html', {'form': form, 'log': log, 'pk':pk, 'habit':habit, "habits" : habits})
 
 def delete_log(request, pk):
     log = get_object_or_404(Log, pk=pk)
